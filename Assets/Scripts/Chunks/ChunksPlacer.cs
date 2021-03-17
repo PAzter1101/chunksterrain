@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class ChunksPlacer : MonoBehaviour
 {
+    public List<Chunk> SpawnedChunks { get => spawnedChunks; }
+
     [SerializeField] private Transform player;
     [SerializeField] private Chunk firstChunk;
     [SerializeField] private Chunk[] chunkPrefabs;    
 
-    private List<Chunk> spawnedChunks = new List<Chunk>();
+    [SerializeField] private List<Chunk> spawnedChunks = new List<Chunk>();
+
 
     private void Start()
     {
@@ -16,7 +19,7 @@ public class ChunksPlacer : MonoBehaviour
     }
     private void Update()
     {
-        if (player.position.z> spawnedChunks[spawnedChunks.Count - 1].End.position.z)
+        if (player.position.z > spawnedChunks[spawnedChunks.Count-1].End.position.z)
         {
             SpawnChunk();
         }
